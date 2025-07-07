@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="google-site-verification" content="eRiZFoJmI82cOQoXHeEsuimdZeScM9D-dG9t_VhMq34" />
+  <meta charset="UTF-8">
+  <title> Vault - Horror</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Buy The Hollow Signal and more, chilling storybooks by Temidara Simon.">
+  <meta name="keywords" content="horror storybook, The Hollow Signal, ebook, Temidara Simon, Temidara Book Vault">
+  <meta property="og:title" content="Temidara Book Vault - Horror & More">
+  <meta property="og:description" content="A chilling horror storybook by Temidara Simon and more.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Temidara Book Vault - Horror & More">
+  <meta name="twitter:description" content="A chilling horror storybook by Temidara Simon and more.">
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80">
+  
+  <!-- TailwindCSS & Animate.css -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      min-height: 100%;
+      font-family: 'Montserrat', 'Roboto Mono', sans-serif;
+    }
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f2027 0%, #2c5364 100%);
+      color: #e5e7eb;
+      min-height: 100vh;
+      position: relative;
+    }
+    .hero-bg {
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      min-height: 100vh;
+      position: relative;
+    }
+    .hero-bg::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(15,32,39,0.92) 65%, rgba(44,83,100,0.7));
+      z-index: 1;
+      pointer-events: none;
+    }
+    .overlay {
+      position: relative;
+      background: rgba(0, 0, 0, 0.6);
+      min-height: 100vh;
+      box-shadow: 0 0 48px 0 rgba(44,83,100,0.4) inset;
+      z-index: 2;
+      pointer-events: auto;
+    }
+    .neon-text {
+      color: #fff;
+      text-shadow: 0 0 8px #d7263d, 0 0 12px #d7263d, 0 0 16px #fff;
+    }
+    .glass {
+      background: rgba(20, 30, 48, 0.7);
+      border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 1.5rem;
+      box-shadow: 0 4px 32px 0 rgba(44,83,100,0.3);
+      backdrop-filter: blur(8px);
+    }
+    ::-webkit-scrollbar { width: 8px; background: #222a36; }
+    ::-webkit-scrollbar-thumb { background: #2c5364; border-radius: 8px; }
+    .chat-bubble {
+      max-width: 70%;
+      padding: 1rem;
+      border-radius: 1.25rem;
+    }
+    .chat-user { background: #d7263d; color: #fff; align-self: flex-end; }
+    .chat-ai { background: #232e3a; color: #aee1f9; align-self: flex-start; }
+    .chat-container { display: flex; flex-direction: column; gap: 0.7rem; }
+    .profile-menu { min-width: 180px; }
+    @media (max-width: 700px) {
+      .max-w-5xl, .max-w-3xl { max-width: 98vw !important; }
+      #aiWidget { right: 0; left: 0; margin: auto; width: 97vw !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-bg min-h-screen flex flex-col z-0">
+    <div class="overlay flex-1 z-10 relative">
+      <!-- Navigation Bar -->
+      <header>
+        <nav class="navbar glass py-4 px-4 md:px-8 mt-4 mx-4 animate__animated animate__fadeInDown" role="navigation" aria-label="main navigation" style="z-index:20;position:relative">
+          <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <a href="https://temidarasimon.com" class="text-3xl font-bold neon-text tracking-wide" target="_blank" rel="noopener">Readers Vault</a>
+            <ul class="flex space-x-4 md:space-x-8 text-gray-200 font-semibold items-center">
+              <li><a href="https://www.example.com" class="hover:text-red-400 transition">Home</a></li>
+              <li><a href="https://www.example.com/about" class="hover:text-red-400 transition">About</a></li>
+              <li><a href="https://www.example.com/preview" class="hover:text-red-400 transition">Preview</a></li>
+              <li><a href="https://www.example.com/Reviews" class="hover:text-red-400 transition">Reviews</a></li>
+              <li><a href="https://www.example.com/FAQ" class="hover:text-red-400 transition">FAQ</a></li>
+              <li>
+                <a href="https://temidarasimon.com" target="_blank" rel="noopener" class="hover:text-blue-400 font-semibold transition">TemidaraSimon.com</a>
+              </li>
+              <li>
+                <button id="sellBtn" class="hover:text-red-400 font-semibold transition">Sell</button>
+              </li>
+              <li>
+                <button id="aiBtn" class="text-blue-400 hover:text-blue-200 focus:outline-none" title="AI Assistant">
+                  <i class="fa-solid fa-robot"></i>
+                </button>
+              </li>
+              <!-- Profile Circle and Settings Dropdown -->
+              <li class="relative">
+                <button id="profileBtn" class="focus:outline-none flex items-center">
+                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Temidarasimon"
+                       alt="Profile"
+                       class="w-10 h-10 rounded-full border-2 border-blue-400 shadow-md object-cover bg-gray-800"
+                  />
+                </button>
+                <!-- Profile dropdown (hidden by default) -->
+                <div id="profileDropdown" class="profile-menu absolute right-0 mt-2 bg-gray-900 glass rounded-xl shadow-lg py-2 hidden z-50">
+                  <div class="px-4 py-2 text-blue-200 font-bold border-b border-blue-700 flex items-center gap-2">
+                    <i class="fa fa-user-circle"></i> T
+                  </div>
+                  <button class="block w-full text-left px-4 py-2 text-gray-200 hover:bg-blue-900 transition" id="openSettings">
+                    <i class="fa fa-cog mr-2"></i> Settings
+                  </button>
+                  <button class="block w-full text-left px-4 py-2 text-gray-200 hover:bg-blue-900 transition">
+                    <i class="fa fa-sign-out-alt mr-2"></i> Log Out
+                  </button>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+
+      <!-- Settings Modal -->
+      <div id="settingsModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+        <div class="glass rounded-2xl shadow-2xl w-full max-w-md mx-auto relative animate__animated animate__fadeInDown">
+          <div class="flex justify-between items-center px-6 py-4 border-b border-blue-500">
+            <h3 class="text-2xl font-bold text-blue-300">Settings</h3>
+            <button id="closeSettings" class="text-blue-300 text-2xl hover:text-red-400"><i class="fa fa-times"></i></button>
+          </div>
+          <div class="p-6 space-y-6">
+            <!-- Setting 1: Dark Mode Toggle -->
+            <div class="flex items-center justify-between">
+              <span class="text-lg text-gray-100 font-semibold">Dark Mode</span>
+              <label class="inline-flex relative items-center cursor-pointer">
+                <input type="checkbox" id="toggleDark" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-700 rounded-full peer peer-checked:bg-blue-600 transition"></div>
+                <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"></div>
+              </label>
+            </div>
+            <!-- Setting 2: Email Notifications -->
+            <div class="flex items-center justify-between">
+              <span class="text-lg text-gray-100 font-semibold">Email Notifications</span>
+              <label class="inline-flex items-center cursor-pointer">
+                <input type="checkbox" id="toggleEmail" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-700 rounded-full peer peer-checked:bg-green-600 transition"></div>
+                <div class="dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition peer-checked:translate-x-5"></div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book Search Bar -->
+      <section class="max-w-3xl mx-auto mt-8 mb-4 px-4 z-20 relative">
+        <form id="bookSearchForm" class="flex items-center gap-3 glass p-4 rounded-xl shadow-lg animate__animated animate__fadeInDown">
+          <input
+            type="text"
+            id="bookSearchInput"
+            placeholder="Search for books by title, author, or keyword..."
+            class="flex-1 px-4 py-2 rounded-lg bg-gray-900 text-gray-100 border border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+          <button type="submit" class="px-5 py-2 bg-gradient-to-r from-blue-600 to-purple-700 text-white font-bold rounded-lg shadow hover:scale-105 transition">
+            <i class="fa fa-search mr-2"></i>Search
+          </button>
+        </form>
+        <div id="bookSearchResults" class="mt-4"></div>
+      </section>
+
+      <!-- Hero Section -->
+      <section id="home" class="flex flex-col md:flex-row items-center gap-10 pt-8 pb-16 max-w-5xl mx-auto animate__animated animate__fadeInUp z-10 relative">
+        <img src="\Users\SOYO-LLC\Pictures\AQPO75RpcLeGEyqEPC7tqo6d7YT2vuZhjDf2llqpvsGFJmPRcUf4zf4_3IWGtwnCj5e7Cd0ps5-dVpC4IDDB1ZnvIPpOv9_kqgttdYOyG4jHiBhy8wP5GuNbKuHLBIeGEj-btuDd9kaJsyQJoU3k9sGF.jpeg" alt="The Hollow Signal Book Cover"
+             class="rounded-2xl shadow-2xl border-4 border-red-700 animate__animated animate__zoomIn w-full md:w-1/3 max-w-xs bg-gray-800 bg-opacity-70">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-bold neon-text mb-4 tracking-tight">Modern Horror </h1>
+          <p class="text-lg md:text-xl text-gray-100 leading-relaxed mb-4">
+            In the small town of Coldwater, Ohio, the radio station WCLT 98.7 goes silent, replaced by a voice that knows your name.
+            <span class="text-red-300 font-semibold">The Hollow Signal</span> is a chilling horror storybook by Temidara Simon, perfect for fans of Stephen King and cosmic horror.
+          </p>
+          <div class="mb-4">
+            <span class="inline-block bg-yellow-500 text-black px-3 py-1 rounded font-mono text-lg shadow">Cash Token: TEMICASH</span>
+          </div>
+          <a href="https://temidarasimon.com/buy?token=TEMICASH"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="inline-block mt-4 px-10 py-4 bg-gradient-to-r from-green-500 via-blue-600 to-purple-600 text-white font-extrabold rounded-lg shadow-lg text-xl hover:scale-105 transition"
+          >
+            <i class="fa-solid fa-bolt mr-2"></i> Buy Now $4.99
+          </a>
+          <div class="mt-4">
+            <a href="https://temidarasimon.com" target="_blank" rel="noopener" class="underline text-blue-400 hover:text-blue-200 font-semibold">TemidaraSimon.com</a>
+          </div>
+        </div>
+      </section>
+      <!-- Sell Book Form (hidden by default) -->
+      <section id="sellFormSection" class="mt-12 max-w-3xl mx-auto hidden animate__animated animate__fadeInUp z-20 relative">
+        <h2 class="text-3xl font-bold text-red-400 mb-4">List Your Book For Sale</h2>
+        <form id="sellForm" class="glass p-8 space-y-4">
+          <div>
+            <label class="block mb-2">Book Title</label>
+            <input type="text" id="bookTitle" required class="w-full px-3 py-2 bg-gray-900 text-gray-100 rounded-lg border border-red-700 focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label class="block mb-2">Author Name</label>
+            <input type="text" id="bookAuthor" required class="w-full px-3 py-2 bg-gray-900 text-gray-100 rounded-lg border border-red-700 focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label class="block mb-2">Short Description</label>
+            <textarea id="bookDesc" required class="w-full px-3 py-2 bg-gray-900 text-gray-100 rounded-lg border border-red-700 focus:ring-2 focus:ring-red-500"></textarea>
+          </div>
+          <div>
+            <label class="block mb-2">Book Cover Image URL</label>
+            <input type="url" id="bookCover" required class="w-full px-3 py-2 bg-gray-900 text-gray-100 rounded-lg border border-red-700 focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label class="block mb-2">Buy Link (Paystack, Gumroad, etc.)</label>
+            <input type="url" id="bookBuy" required class="w-full px-3 py-2 bg-gray-900 text-gray-100 rounded-lg border border-red-700 focus:ring-2 focus:ring-red-500">
+          </div>
+          <div>
+            <label class="block mb-2">Price (e.g. 4.99)</label>
+            <input type="number" id="bookPrice" step="0.01" required class="w-full px-3 py-2 bg-gray-900 text-gray-100 rounded-lg border border-red-700 focus:ring-2 focus:ring-red-500">
+          </div>
+          <button type="submit"
+            class="bg-gradient-to-r from-red-600 via-red-800 to-pink-700 hover:from-pink-700 hover:to-red-600 text-white font-bold px-8 py-3 rounded-lg shadow-lg text-lg transition"
+          >Submit</button>
+        </form>
+        <div id="sellSuccessMsg" class="mt-4 text-green-300 font-bold hidden">Thank you! Your book has been submitted for review.</div>
+      </section>
+      <!-- AI Assistant Widget (hidden by default) -->
+      <div id="aiWidget"
+        class="fixed bottom-7 right-7 z-50 w-full max-w-md animate__animated animate__fadeInUp hidden"
+        style="font-family: 'Roboto Mono', monospace;">
+        <div class="glass border-2 border-blue-400 shadow-2xl rounded-2xl">
+          <div class="flex items-center justify-between p-4 border-b border-blue-300">
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-robot text-blue-400 text-2xl"></i>
+              <span class="font-bold text-blue-200 text-lg">AI Assistant</span>
+            </div>
+            <button id="closeAi" class="text-blue-200 text-2xl hover:text-red-400"><i class="fa fa-times"></i></button>
+          </div>
+          <div id="aiChat" class="chat-container p-4 overflow-y-auto" style="max-height: 340px;">
+            <div class="chat-bubble chat-ai">Hello! 👋 I can answer questions in 50+ categories: books, science, tech, movies, music, coding, cooking, health, history, travel, sports, art, finance, business, law, math, relationships, parenting, fitness, AI, and much more. Ask me anything!</div>
+          </div>
+          <form id="aiForm" class="flex items-center gap-2 p-4 border-t border-blue-300">
+            <input id="aiInput" type="text" autocomplete="off" placeholder="Ask me anything..." class="flex-1 bg-gray-900 rounded-lg px-4 py-2 text-blue-100 border border-blue-400 focus:ring-2 focus:ring-blue-500">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 py-2 rounded-lg shadow">Send</button>
+          </form>
+        </div>
+      </div>
+      <main class="max-w-5xl mx-auto px-4 py-12">
+        <!-- Story Preview -->
+        <section id="preview" class="mt-12 glass p-8 rounded-2xl shadow-lg animate__animated animate__fadeInUp" aria-labelledby="preview-title">
+          <h2 id="preview-title" class="text-3xl font-bold text-red-400">Story Preview</h2>
+          <p class="mt-4 text-gray-100 leading-relaxed italic">
+            At 3:17 a.m., the radio went dead. Lila Carter tapped the old boombox, but a voice crackled through—not Tommy Vance’s drawl, but something low, guttural. “They’re watching from the fields. Don’t look at the lights.” Her name echoed from the speaker: “Lila. They see you.” Outside, blue lights pulsed in the corn, moving closer, their shapes wrong—tall, thin, bending like reeds in a storm...
+          </p>
+          <p class="mt-4 text-gray-200">Want to know what happens next? Grab your copy now!</p>
+          <a href="https://www.shortstorylovers.com/temidara-simon87"
+             target="_blank"
+             rel="noopener noreferrer"
+             id="getFullStoryBtn"
+             class="inline-block mt-4 px-6 py-2 bg-gradient-to-r from-green-500 via-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:scale-105 transition"
+          >Get the Full Story with Shot Story Lover</a>
+        </section>
+        <!-- Reviews -->
+        <section id="reviews" class="mt-12 glass p-8 rounded-2xl shadow-lg animate__animated animate__fadeInUp" aria-labelledby="reviews-title">
+          <h2 id="reviews-title" class="text-3xl font-bold text-red-400">What Readers Are Saying</h2>
+          <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <blockquote class="bg-gray-900 bg-opacity-70 p-4 rounded-lg border-l-4 border-red-600">
+              <p class="text-gray-100 italic">“A spine-chilling read that kept me up all night. The Hollow Signal feels too real!”</p>
+              <footer class="mt-2 text-gray-400">— Sarah M., Horror Enthusiast</footer>
+            </blockquote>
+            <blockquote class="bg-gray-900 bg-opacity-70 p-4 rounded-lg border-l-4 border-pink-600">
+              <p class="text-gray-100 italic">“The atmosphere is haunting, and the story lingers like a bad dream. A must-read!”</p>
+              <footer class="mt-2 text-gray-400">— James T., Book Blogger</footer>
+            </blockquote>
+          </div>
+        </section>
+        <!-- Newsletter Signup -->
+        <section id="signup" class="mt-12 glass p-8 rounded-2xl shadow-lg animate__animated animate__fadeInUp" aria-labelledby="newsletter-title">
+          <h2 id="newsletter-title" class="text-3xl font-bold text-red-400">Join the Newsletter</h2>
+          <p class="mt-4 text-gray-100">Stay updated on new releases, exclusive content, and more!</p>
+          <form id="newsletterForm" class="mt-4 flex flex-col sm:flex-row gap-2">
+            <input id="email" type="email" name="EMAIL" placeholder="Enter your email" required class="px-4 py-2 bg-gray-900 text-gray-200 rounded-l-lg focus:outline-none flex-1 border border-red-400">
+            <button type="submit" id="subscribeBtn" class="px-4 py-2 bg-gradient-to-r from-red-600 via-pink-700 to-red-700 text-white font-semibold rounded-r-lg hover:scale-105 transition">Subscribe</button>
+          </form>
+          <div id="subscribeMsg" class="mt-4 hidden"></div>
+        </section>
+        <!-- FAQ -->
+        <section id="faq" class="mt-12 glass p-8 rounded-2xl shadow-lg animate__animated animate__fadeInUp" aria-labelledby="faq-title">
+          <h2 id="faq-title" class="text-3xl font-bold text-red-400">Frequently Asked Questions</h2>
+          <div class="mt-4 space-y-4">
+            <div>
+              <h3 class="text-xl font-semibold text-gray-100">What format is the book available in?</h3>
+              <p class="text-gray-300">The Hollow Signal is available as a PDF eBook for instant download.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-100">How do I receive my purchase?</h3>
+              <p class="text-gray-300">After purchase via TemidaraSimon.com, you’ll receive a download link via email.</p>
+            </div>
+            <div>
+              <h3 class="text-xl font-semibold text-gray-100">Is there a physical copy available?</h3>
+              <p class="text-gray-300">Currently, only the eBook is available. Stay tuned for print editions!</p>
+            </div>
+          </div>
+        </section>
+        <!-- Author Bio -->
+        <section id="about" class="mt-12 glass p-8 rounded-2xl shadow-lg animate__animated animate__fadeInUp" aria-labelledby="author-title">
+          <h2 id="author-title" class="text-3xl font-bold text-red-400">About the Author</h2>
+          <p class="mt-4 text-gray-100 leading-relaxed">
+            Temidara Simon is a passionate storyteller with a love for horror and the supernatural. Inspired by real-life mysteries and small-town legends, Temidara crafts tales that linger long after the last page. When not writing, Temidara explores abandoned places and listens to old radios, hoping not to hear the hollow signal.
+          </p>
+        </section>
+      </main>
+      <!-- Footer -->
+      <footer class="glass bg-gray-900 py-6 text-center text-gray-400 rounded-t-2xl mt-20 animate__animated animate__fadeInUp">
+        <div class="flex justify-center space-x-6 mb-4">
+          <a href="https://twitter.com/temidarasimon" target="_blank" rel="noopener noreferrer" aria-label="Twitter" class="hover:text-red-400"><i class="fab fa-twitter fa-lg"></i></a>
+          <a href="https://instagram.com/temidarasimon" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="hover:text-red-400"><i class="fab fa-instagram fa-lg"></i></a>
+          <a href="https://facebook.com/temidarasimon" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="hover:text-red-400"><i class="fab fa-facebook fa-lg"></i></a>
+        </div>
+        <p>Contact: <a href="mailto:temidarasimon183@gmail.com" class="underline hover:text-red-400">temidarasimon183@example.com</a></p>
+        <p>
+          <a href="https://temidarasimon.com" target="_blank" rel="noopener" class="underline text-blue-400 hover:text-blue-200">www.TemidaraSimon.com</a>
+        </p>
+        <p>© 2025 Temidara Simon. All rights reserved.</p>
+      </footer>
+    </div>
+  </div>
+  <script>
+    // Sticky Navbar
+    const navbar = document.querySelector('.navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('sticky');
+      } else {
+        navbar.classList.remove('sticky');
+      }
+    });
+
+    // Profile Dropdown
+    const profileBtn = document.getElementById('profileBtn');
+    const profileDropdown = document.getElementById('profileDropdown');
+    document.addEventListener('click', function(e) {
+      if (profileBtn && profileDropdown) {
+        if (profileBtn.contains(e.target)) {
+          profileDropdown.classList.toggle('hidden');
+        } else if (!profileDropdown.contains(e.target)) {
+          profileDropdown.classList.add('hidden');
+        }
+      }
+    });
+
+    // Settings Modal Logic
+    const openSettingsBtn = document.getElementById('openSettings');
+    const settingsModal = document.getElementById('settingsModal');
+    const closeSettings = document.getElementById('closeSettings');
+    openSettingsBtn.addEventListener('click', () => {
+      settingsModal.classList.remove('hidden');
+      profileDropdown.classList.add('hidden');
+    });
+    closeSettings.addEventListener('click', () => {
+      settingsModal.classList.add('hidden');
+    });
+    // Dark Mode Toggle (Demo: just toggles background color)
+    const toggleDark = document.getElementById('toggleDark');
+    toggleDark.addEventListener('change', function() {
+      if (toggleDark.checked) {
+        document.body.style.background = "linear-gradient(135deg, #181818 0%, #374151 100%)";
+      } else {
+        document.body.style.background = "linear-gradient(135deg, #0f2027 0%, #2c5364 100%)";
+      }
+    });
+    // Email Notification Toggle (Demo: alert)
+    const toggleEmail = document.getElementById('toggleEmail');
+    toggleEmail.addEventListener('change', function() {
+      if (toggleEmail.checked) {
+        alert("Email notifications enabled!");
+      } else {
+        alert("Email notifications disabled!");
+      }
+    });
+
+    // Newsletter subscribe logic
+    const newsletterForm = document.getElementById('newsletterForm');
+    const subscribeMsg = document.getElementById('subscribeMsg');
+    newsletterForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      // Simple email validation
+      if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+        subscribeMsg.textContent = "Please enter a valid email address.";
+        subscribeMsg.className = "mt-4 text-red-300 font-semibold";
+        subscribeMsg.classList.remove("hidden");
+        return;
+      }
+      // Simulate async subscribe (replace with real API/endpoint as needed)
+      subscribeMsg.textContent = "Subscribing...";
+      subscribeMsg.className = "mt-4 text-blue-200 font-semibold";
+      subscribeMsg.classList.remove("hidden");
+      setTimeout(() => {
+        subscribeMsg.textContent = "Thank you for subscribing! Please check your inbox.";
+        subscribeMsg.className = "mt-4 text-green-400 font-bold";
+        subscribeMsg.classList.remove("hidden");
+        newsletterForm.reset();
+      }, 1200);
+    });
+
+    // Smooth Scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Sell Button and Form Logic
+    const sellBtn = document.getElementById('sellBtn');
+    const sellFormSection = document.getElementById('sellFormSection');
+    const sellForm = document.getElementById('sellForm');
+    const sellSuccessMsg = document.getElementById('sellSuccessMsg');
+    sellBtn.addEventListener('click', function() {
+      sellFormSection.classList.remove('hidden');
+      sellFormSection.scrollIntoView({ behavior: 'smooth' });
+    });
+    sellForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      sellSuccessMsg.classList.remove('hidden');
+      sellForm.reset();
+      setTimeout(() => {
+        sellSuccessMsg.classList.add('hidden');
+        sellFormSection.classList.add('hidden');
+      }, 3000);
+    });
+
+    // AI Assistant Logic
+    const aiBtn = document.getElementById('aiBtn');
+    const aiWidget = document.getElementById('aiWidget');
+    const closeAi = document.getElementById('closeAi');
+    const aiChat = document.getElementById('aiChat');
+    const aiForm = document.getElementById('aiForm');
+    const aiInput = document.getElementById('aiInput');
+    const CATEGORIES = [
+      "books", "science", "technology", "movies", "music", "coding", "cooking", "health", "history", "travel", "sports", "art", "finance", "business", "law", "math",
+      "relationships", "parenting", "fitness", "AI", "philosophy", "psychology", "poetry", "languages", "geography", "fashion", "gaming", "education", "career", "spirituality",
+      "politics", "news", "nature", "astronomy", "biology", "chemistry", "physics", "medicine", "marketing", "seo", "entrepreneurship", "leadership", "startup", "DIY", "gardening",
+      "writing", "comics", "anime", "pets", "food", "environment"
+    ];
+    aiBtn.addEventListener('click', () => {
+      aiWidget.classList.remove('hidden');
+    });
+    closeAi.addEventListener('click', () => {
+      aiWidget.classList.add('hidden');
+    });
+    aiForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const question = aiInput.value.trim();
+      if (!question) return;
+      appendChatBubble(question, "user");
+      aiInput.value = "";
+      setTimeout(() => {
+        appendChatBubble(getAIResponse(question), "ai");
+        aiChat.scrollTop = aiChat.scrollHeight;
+      }, 900);
+    });
+    function appendChatBubble(text, who) {
+      const bubble = document.createElement('div');
+      bubble.className = 'chat-bubble ' + (who === "user" ? "chat-user self-end" : "chat-ai self-start");
+      bubble.innerText = text;
+      aiChat.appendChild(bubble);
+      aiChat.scrollTop = aiChat.scrollHeight;
+    }
+    function getAIResponse(question) {
+      const q = question.toLowerCase();
+      let category = CATEGORIES.find(cat => q.includes(cat));
+      if (!category) category = CATEGORIES[Math.floor(Math.random() * CATEGORIES.length)];
+      switch (category) {
+        case "books": return "Looking for a good read? Try 'The Hollow Signal' for horror, or let me know your favorite genre!";
+        case "science": return "Science is fascinating! Did you know the speed of light is about 299,792,458 meters per second?";
+        case "coding": return "Need coding help? Ask me about HTML, CSS, JavaScript, Python, and more!";
+        case "music": return "Music fuels the soul! Do you want song recommendations or music theory tips?";
+        case "movies": return "For horror movies: Try 'Hereditary', 'The Babadook', or 'A Quiet Place'. Want more genres?";
+        case "AI": return "AI (Artificial Intelligence) allows machines to learn and solve problems. Want to know about ChatGPT, image AI, or something else?";
+        case "fitness": return "Fitness tip: Consistency beats intensity. Need a workout plan or nutrition advice?";
+        case "travel": return "Travel expands your horizons. Where do you want to go? I can suggest destinations!";
+        case "finance": return "Finance tip: Track your spending and invest for the long term. Need help with budgeting or investing?";
+        case "history": return "History is full of amazing stories! Any era or country you want to learn about?";
+        case "relationships": return "Healthy communication is key to strong relationships. Want advice on friendship, dating, or family?";
+        case "math": return "I can help with algebra, calculus, geometry, and more. What's your math question?";
+        case "food": return "Craving something delicious? I can suggest recipes or cooking tips!";
+        case "law": return "Law is complex! Do you have a question about contracts, rights, or legal history?";
+        case "art": return "Art inspires creativity! Are you interested in painting, sculpture, or digital art?";
+        case "psychology": return "Psychology explores the human mind. Need advice on motivation, emotions, or mental health?";
+        case "sports": return "Sports are exciting! Want the latest scores, history, or training tips?";
+        case "business": return "Thinking of starting a business? I can help with ideas, plans, or marketing!";
+        case "technology": return "Tech is changing the world! Ask me about gadgets, the internet, or emerging trends.";
+        case "cooking": return "Cooking is fun! Want a recipe or tips for a specific dish?";
+        default: return `I'm happy to help on ${category}! What would you like to know?`;
+      }
+    }
+
+    // Book Search Bar Logic (Demo Data)
+    const demoBooks = [
+      {
+        title: "The Hollow Signal",
+        author: "Temidara Simon",
+        desc: "A cosmic horror set in Coldwater, Ohio. A signal, a mystery, and blue lights in the corn.",
+        cover: "https://via.placeholder.com/120x170.png?text=The+Hollow+Signal",
+        buy: "https://temidarasimon.com/buy?token=TEMICASH"
+      },
+      {
+        title: "Wraiths of Winter",
+        author: "Temidara Simon",
+        desc: "A chilling tale of ghosts in a snowed-in town.",
+        cover: "https://via.placeholder.com/120x170.png?text=Wraiths+of+Winter",
+        buy: "https://temidarasimon.com/buy?token=TEMICASH"
+      },
+      {
+        title: "The Night Listeners",
+        author: "Jane Shadow",
+        desc: "Strange voices haunt the midnight radio.",
+        cover: "https://via.placeholder.com/120x170.png?text=Night+Listeners",
+        buy: "#"
+      }
+    ];
+    const bookSearchForm = document.getElementById('bookSearchForm');
+    const bookSearchInput = document.getElementById('bookSearchInput');
+    const bookSearchResults = document.getElementById('bookSearchResults');
+    bookSearchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const q = bookSearchInput.value.trim().toLowerCase();
+      if (!q) {
+        bookSearchResults.innerHTML = "";
+        return;
+      }
+      const results = demoBooks.filter(b =>
+        b.title.toLowerCase().includes(q) ||
+        b.author.toLowerCase().includes(q) ||
+        b.desc.toLowerCase().includes(q)
+      );
+      if (results.length === 0) {
+        bookSearchResults.innerHTML = `<div class="text-red-300 font-semibold p-4">No books found for "<b>${q}</b>".</div>`;
+        return;
+      }
+      bookSearchResults.innerHTML = results.map(b => `
+        <div class="flex gap-5 items-center bg-gray-900 bg-opacity-70 p-4 my-2 rounded-xl shadow glass">
+          <img src="${b.cover}" alt="${b.title} cover" class="w-20 h-28 rounded-lg shadow-md border-2 border-blue-400 bg-gray-800 object-cover">
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-blue-200">${b.title}</h3>
+            <div class="text-gray-300 mb-1">by <span class="font-semibold">${b.author}</span></div>
+            <div class="text-gray-400 text-sm mb-2">${b.desc}</div>
+            <a href="${b.buy}" target="_blank" class="inline-block bg-blue-600 hover:bg-blue-800 text-white font-bold px-4 py-2 rounded-lg shadow transition">Buy Now</a>
+          </div>
+        </div>
+      `).join('');
+    });
+  </script>
+</body>
+</html>
